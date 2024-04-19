@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profit.ru</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1><a href="/">Profit.ru</a></h1><hr>
+<h4>Подробная информация о машине:</h4>
+<div th:each="image : ${car.images}">
+    <img th:src="@{'/images/'+${image.id}}" height="120px">
+</div>
+
+<b>Название машины:</b><span th:text="${car.title}"></span><br>
+<b>Описание:</b><span th:text="${car.description}"></span><br>
+<b>Цена:</b><span th:text="${car.price}"></span><br>
+<b>Город:</b><span th:text="${car.city}"></span><br>
+<b>Автор:</b><span th:text="${car.username}"></span><br>
+<hr>
+<h3>Удалить?</h3>
+<form action="#" th:action="@{'/car/delete/' + ${car.id}}" method="post">
+    <input type="submit" value="Удалить объявление">
+</form>
+</body>
+</html>
