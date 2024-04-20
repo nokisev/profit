@@ -4,32 +4,78 @@
     <meta charset="UTF-8">
     <title>Profit.ru</title>
     <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 <body>
-<h1><a href="/">Profit.ru</a></h1><hr>
-<h4>Самые свежие объявления:</h4>
-<form action="/" method="get">
+    <div id="cart">
+        <i class='bx bxs-cart cart'></i>
+        <div class="notify">1</div>
+    </div>
+<div th:replace="header :: content"></div>
+<div id="about" class="about-us">
+    <h2>Наш бренд хочет показать, что полезное может быть вкусным.</h5>
+    <p><i>Компания была основана в 2009 году и была одной из первых в области продажи продуктов здорового питания. У нас имеется огромный опыт, полученный годами.</i>
+    </p>
+</div>
+<!-- <h4>Самые свежие объявления:</h4> -->
+<!-- <form action="/" method="get">
     Поиск по названию объявления: <input type="text" name="title"><br>
     <input type="submit" value="Поиск">
-</form>
-<div th:each="car : ${cars}">
-    <div>
-        <b><span th:text="${car.title}"> Title </span></b> <span th:text="${car.price} +   руб."> Price </span> | <a th:href="@{'/car/'+${car.id}}"> Подробнее </a>
+</form> -->
+<div id="products" class="categories">
+    <div class="categoriesfirst">
+        <h1>Продукты без сахара</h1>
+        <div class="products-null-sugar">
+            <div th:each="product : ${products}" th:if="${product.id} <= 7">
+                <div class="products">
+                    <div th:each="image : ${product.images}">
+                        <img th:src="@{'/images/'+${image.id}}" height="300px">
+                    </div>
+                    <b><h3 th:text="${product.title}"> Title </h3></b><br> <span th:text="${product.weight} +   гр."> Weight </span><br> <span th:text="${product.price} + руб."> Price</span> <br><br> <a class="buy" th:href="@{'/product/'+${product.id}}"> Добавить в корзину </a>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="categoriessecond">
+        <h1>Диетическое питание</h1>
+        <div class="products-diet">
+            <div th:each="product : ${products}" th:if="${product.id} > 7">
+                <div class="products">
+                    <div th:each="image : ${product.images}">
+                        <img th:src="@{'/images/'+${image.id}}" height="300px">
+                    </div>
+                    <b><h3 th:text="${product.title}"> Title </h3></b><br> <span th:text="${product.weight} +   гр."> Weight </span><br> <span th:text="${product.price} + руб."> Price</span> <br><br> <a class="buy" th:href="@{'/product/'+${product.id}}"> Добавить в корзину </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </div>
+<div id="delivery" class="about-us">
+    <h1>НАША ДОСТАВКА</h1>
+    <p align="center">
+        Мы осуществляем доставку по Москве и Московской области, а также можем выслать заказ почтой по всей территории России. Стоимость доставки: от 300 рублей и выше, в зависимости от региона
+    </p>
+</div>
+
+
 <hr>
-<h3>Опубликовать свою машину</h3>
-<form action="/car/create" method="post" enctype="multipart/form-data">
-    Название объявления: <input type="text" name="title"><br><br>
-    Описание объявления: <input type="text" name="description"><br><br>
+<!-- <h3>Опубликовать свой товар</h3>
+<form action="/product/create" method="post" enctype="multipart/form-data">
+    Название: <input type="text" name="title"><br><br>
+    Состав: <input type="text" name="description"><br><br>
+    Вес товара: <input type="text" name="weight"><br><br>
     Цена: <input type="number" name="price"><br><br>
-    Город: <input type="text" name="city"><br><br>
-    Автор: <input type="text" name="username"><br><br>
     Первая фотография: <input type="file" name="file1"><br><br>
     Вторая фотография: <input type="file" name="file2"><br><br>
     Третья фотография: <input type="file" name="file3"><br><br>
 
     <input type="submit" value="Разместить объявление">
-</form>
+</form> -->
+<div th:replace="footer :: content"></div>
+
+
 </body>
 </html>

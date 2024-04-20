@@ -1,8 +1,8 @@
 package auto.profit.services;
 
-import auto.profit.models.Car;
+import auto.profit.models.Product;
 import auto.profit.models.Image;
-import auto.profit.repositories.CarRepo;
+import auto.profit.repositories.ProductRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,41 +12,41 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class CarService {
+public class ProductService {
 
 
 
-    private final CarRepo carRepo;
-    public CarService(CarRepo carRepo) {
-        this.carRepo = carRepo;
+    private final ProductRepo productRepo;
+    public ProductService(ProductRepo productRepo) {
+        this.productRepo = productRepo;
     }
 
-    public List<Car> listCars(String title) {
-        if (title != null) return carRepo.findByTitle(title);
-        return carRepo.findAll();
+    public List<Product> listProducts(String title) {
+        if (title != null) return productRepo.findByTitle(title);
+        return productRepo.findAll();
     }
 
-    public void saveCar(Car car, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {
+    public void saveProduct(Product product, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {
         Image image1;
         Image image2;
         Image image3;
         if (file1.getSize() != 0) {
             image1 = toImageEntity(file1);
             image1.setPreviewImage(true);
-            car.addImageToProduct(image1);
+            product.addImageToProduct(image1);
         }
         if (file2.getSize() != 0) {
             image2 = toImageEntity(file2);
-            car.addImageToProduct(image2);
+            product.addImageToProduct(image2);
         }
         if (file3.getSize() != 0) {
             image3 = toImageEntity(file3);
-            car.addImageToProduct(image3);
+            product.addImageToProduct(image3);
         }
-        log.info("Saving new Product. Title: {}; Author: {}", car.getTitle(), car.getUsername());
-        Car carFromDb = carRepo.save(car);
-        carFromDb.setPreviewImageId(carFromDb.getImages().get(0).getId());
-        carRepo.save(car);
+
+        Product productFromDb = productRepo.save(product);
+        productFromDb.setPreviewImageId(productFromDb.getImages().get(0).getId());
+        productRepo.save(product);
     }
 
     private Image toImageEntity(MultipartFile file) throws IOException {
@@ -59,11 +59,11 @@ public class CarService {
         return image;
     }
 
-    public void deleteCar(Long id) {
-        carRepo.deleteById(id);
+    public void deleteProduct(Long id) {
+        productRepo.deleteById(id);
     }
 
-    public Car getCarById(Long id) {
-        return carRepo.findById(id).orElse(null);
+    public Product getProductById(Long id) {
+        return productRepo.findById(id).orElse(null);
     }
 }

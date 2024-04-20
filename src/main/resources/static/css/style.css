@@ -1,3 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 body {
-    background-color: blanchedalmond;
+    background-color: white;
+    font-family: "Montserrat", sans-serif;
 }
+a {
+    color: white;
+    text-decoration: none;
+}
+header {
+
+    display: flex;
+    justify-content: center;
+    
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 20px;
+}
+.menu {
+    margin-bottom: 300px;
+}
+.menu-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.menu-btn p {
+    font-size: 30px;
+    color: white;
+}
+.btn {
+    font-size: 20px;
+    border: solid 2px white;
+    border-radius: 30px;
+    margin-top: 20px;
+    padding: 15px 30px;
+}
+.menu a {
+    font-size: 40px;
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+}
+.menu a:hover {
+    color: grey;
+    transition: all 0.2s ease-in;
+}
+li {
+    display: inline;
+}
+.penis {
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.containter {
+    height: 700px;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1) ), url("back.jpg");
+    background-size: cover; 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.arrow {
+    color: white;
+    padding-top: 110px;
+    animation: t-arrow-bottom 1.5s infinite linear;
+
+}
+@keyframes t-arrow-bottom {
+  0%,to {
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -webkit-transform: translateY(0);
+      -o-transform: translateY(0);
+      transform: translateY(0)
+  }
+
+  50%,55% {
+      -moz-transform: translateY(-7px);
+      -ms-transform: translateY(-7px);
+      -webkit-transform: translateY(-7px);
+      -o-transform: translateY(-7px);
+      transform: translateY(-7px)
+  }
+}
+@keyframes updown {
+    0% {
+      transform: translateY(50px)
+    }
+    50% {
+      transform: translateY(20px);
+    }
+    100% {
+      transform: translateY(50px);
+    }
+  }
+
+  /* about us */
+  .about-us {
+    display: flex;
+    padding: 30px;
+    width: 100%;
+    height: 300px;
+    background-color: #ebebeb;
+    color: black;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .about-us h2 {
+    font-weight: 400;
+  }
+  .about-us i {
+    font-size: 12px;
+  }
+  .about-us p {
+    font-size: 25px;
+    width: 650px;
+  }
+  /* categories */
+  .categories {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  /* продукты без сахара */
+  .products-null-sugar {
+    width: 900px;
+    display: flex;
+    grid-column: 3;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 50px;
+  }
+  .products {
+    margin-top: 50px;
+    width: 300px;
+  }
+  .buy {
+    border: black 2px solid;
+    border-radius: 15px;
+    font-size: 10px;
+    font-weight: 600;
+    background-color: black;
+    padding: 15px 15px;
+  }
+  /* диетические */
+  .products-diet {
+    width: 900px;
+    display: flex;
+    grid-column: 3;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 50px;
+  }
+  /* footer */
+  .vagina {
+    width: 100%;
+  }
+  .containterf {
+    color: white;
+    height: 400px;
+    background: #171111;
+    background-size: cover; 
+    
+  }
+  footer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  footer h1 {
+    width: 900px;
+  }
+  
+
+  /* cart */
+  #cart {
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+  .cart {
+    font-size: 35px;
+    border: white 2px solid;
+    border-radius: 50%;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0px 0 14px 0px;
+    position: relative;
+    justify-content: left;
+  }
+  .notify {
+    width: 10px;
+    height: 10px;
+    font-size: 10px;
+    color: white;
+    font-weight: bold;
+    border: red 2px solid;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: red;
+    box-shadow: 0px 0 14px 0px;
+    position: absolute;
+    justify-content: left;
+  }
